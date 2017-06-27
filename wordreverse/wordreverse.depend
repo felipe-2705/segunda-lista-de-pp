@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1497563512 source:c:\users\bianca\desktop\facul\pp - 2017-1\code - 2017-1\wordreverse\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
