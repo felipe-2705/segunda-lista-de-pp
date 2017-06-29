@@ -14,9 +14,9 @@ int main()
 {
     int perdeu = 0, i, j;
 
-    int mina[dimensao_campo][dimensao_campo] = {0}; //matriz da posição das minas
-    int jogada[dimensao_campo][dimensao_campo] = {0}; //matriz que armazena posições ja abertas
-    int marcada[dimensao_campo][dimensao_campo] = {0}; //matriz que armazena posições marcadas
+    int mina[dimensao_campo][dimensao_campo] = {0}; //matriz da posiÃ§Ã£o das minas
+    int jogada[dimensao_campo][dimensao_campo] = {0}; //matriz que armazena posiÃ§Ãµes ja abertas
+    int marcada[dimensao_campo][dimensao_campo] = {0}; //matriz que armazena posiÃ§Ãµes marcadas
     //inicializando o srand
     time_t t;
     srand((unsigned) time(&t));
@@ -50,15 +50,15 @@ void imprime_campo(int mina[][dimensao_campo], int jogada[][dimensao_campo], int
         for(j = 0; j < dimensao_campo; j++)
         {
             //numero de minas ao redor
-            //restrições servem para não verificar fora da matriz
+            //restriÃ§Ãµes servem para nÃ£o verificar fora da matriz
             nminas=0;
 
-            if(mina[i-1][j-1] == 1 && i-1>0 && j-1>0) nminas++;
-            if(mina[i-1][j] == 1 && i-1 > 0) nminas++;
-            if(mina[i-1][j+1] == 1 && i-1>0 && j+1<dimensao_campo) nminas++;
-            if(mina[i][j-1] == 1 && j-1>0) nminas++;
+            if(mina[i-1][j-1] == 1 && i-1>=0 && j-1>=0) nminas++;
+            if(mina[i-1][j] == 1 && i-1 >=0) nminas++;
+            if(mina[i-1][j+1] == 1 && i-1>=0 && j+1<dimensao_campo) nminas++;
+            if(mina[i][j-1] == 1 && j-1>=0) nminas++;
             if(mina[i][j+1] == 1 && j+1<dimensao_campo) nminas++;
-            if(mina[i+1][j-1] == 1 && i+1<dimensao_campo && j-1>0) nminas++;
+            if(mina[i+1][j-1] == 1 && i+1<dimensao_campo && j-1>=0) nminas++;
             if(mina[i+1][j] == 1 && i+1<dimensao_campo) nminas++;
             if(mina[i+1][j+1] == 1 && i+1<dimensao_campo && j+1<dimensao_campo) nminas++;
 
@@ -89,7 +89,7 @@ void le_jogada(int i, int j, int jogada[][dimensao_campo], int marcada[][dimensa
 {
     int acao;
 
-    //menu de interação
+    //menu de interaÃ§Ã£o
     printf("\n1- Revelar.\n");
     printf("2- Marcar.\n");
     printf("0- Sair.\n\n");
@@ -98,7 +98,7 @@ void le_jogada(int i, int j, int jogada[][dimensao_campo], int marcada[][dimensa
     if(acao == 1) revelar(i, j, jogada, marcada);
     else if(acao == 2) marcar(i, j, marcada, jogada);
     else if(acao == 0) exit(1);
-    else printf("Comando não reconhecido...\n");
+    else printf("Comando nÃ£o reconhecido...\n");
 }
 
 void revelar(int i, int j, int jogada[][dimensao_campo], int marcada[][dimensao_campo])
@@ -117,7 +117,7 @@ void revelar(int i, int j, int jogada[][dimensao_campo], int marcada[][dimensao_
     printf("Digite o numero da coluna que deseja revelar: ");
     scanf("%d", &j);
 
-    //não deixa revelar uma posição marcada
+    //nÃ£o deixa revelar uma posiÃ§Ã£o marcada
     if(marcada[linha][j] == 0)
     {
         jogada[linha][j] = 1;
@@ -140,7 +140,7 @@ void marcar(int i, int j, int marcada[][dimensao_campo], int jogada[][dimensao_c
     printf("Digite o numero da coluna que deseja marcar: ");
     scanf("%d", &j);
 
-    //não deixa marcar uma posição revelada
+    //nÃ£o deixa marcar uma posiÃ§Ã£o revelada
     if(jogada[linha][j] == 0)
     {
         if(marcada[linha][j] == 0) marcada[linha][j] = 1;
@@ -152,7 +152,7 @@ void gerar_mina(int mina[][dimensao_campo], int quantidade)
 {
     int i, j, n, n1;
 
-    for(i=0; i<numero_minas; i++) //o número de vezes que o loop executar, é a quantidade de minas que terá
+    for(i=0; i<numero_minas; i++) //o nÃºmero de vezes que o loop executar, Ã© a quantidade de minas que terÃ¡
     {
         //gera minas entre 0 e n
         n = rand()%dimensao_campo;
