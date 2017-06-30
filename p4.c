@@ -1,10 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int main()
+int telhado(int n,int matriz[][50])
 {
-    int i=0,j=0,n,matriz[50][50]= {0};
-    scanf("%d",&n);
+    int i=0,j=0;
     for (i=0; i<n; i++)
     {
         for (j=0; j<n; j++)
@@ -45,6 +44,13 @@ int main()
             }
         }
     }
+    return matriz;
+}
+int main()
+{
+    int matriza,i=0,j=0,n,matriz[50][50]= {0};
+    scanf("%d",&n);
+    telhado(n,matriz);
     for (i=0; i<n; i++)
     {
         for (j=0; j<n; j++)
