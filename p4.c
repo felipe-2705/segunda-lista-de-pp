@@ -44,11 +44,10 @@ int telhado(int n,int matriz[][50])
             }
         }
     }
-    return matriz;
 }
 int main()
 {
-    int matriza,i=0,j=0,n,matriz[50][50]= {0};
+    int i=0,j=0,n,matriz[50][50]= {0};
     scanf("%d",&n);
     telhado(n,matriz);
     for (i=0; i<n; i++)
